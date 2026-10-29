@@ -1,0 +1,44 @@
+# Linux build scripts and package metadata must keep LF in Git and archives.
+* text=auto eol=lf
+
+# `make dist` ships only the source needed to build and test the packages.
+/* export-ignore
+/.gitignore -export-ignore
+/.gitattributes -export-ignore
+/VERSION -export-ignore
+/LICENSE -export-ignore
+/Makefile -export-ignore
+/README.md -export-ignore
+/QUICKSTART.md -export-ignore
+/rtx4090-register-report.md -export-ignore
+/docs -export-ignore
+/diagnostics -export-ignore
+/firmware -export-ignore
+/kernel -export-ignore
+/licenses -export-ignore
+/packaging -export-ignore
+/tests -export-ignore
+/tools -export-ignore
+/requirements-research.txt -export-ignore
+*.bin export-ignore
+*.cu export-ignore
+/diagnostics/bench/mma_bench.cu -export-ignore
+/diagnostics/bench/validate_gemm.cu -export-ignore
+/diagnostics/bench/tensor_modes_issue.cu -export-ignore
+/debian -export-ignore
+# Keep published evidence bytes identical on Windows and Linux clones.
+/docs/evidence/ada2705/* -text
+/docs/evidence/ada2803/* -text
+/docs/evidence/rtx4090/* -text
+/docs/evidence/rtx4090-pr1-stock/* -text
+/docs/evidence/rtx4090-pr1-stock/gemm_bench.cu -export-ignore
+/docs/evidence/rtx4090-pr1-matched/* -text
+
+# Latence.app: keep source available in archives and preserve exact evidence/header bytes.
+/windows -export-ignore
+/docs/evidence/ad104-windows/** -text whitespace=cr-at-eol,-blank-at-eof
+/windows/ad104-msi/benchmark.py -text
+/windows/ad104-msi/vendor/edk2/** -text whitespace=cr-at-eol,-blank-at-eof
+
+# Preserve exact native RTX 4070 evidence bytes across platforms.
+/docs/evidence/ada2786/* -text
